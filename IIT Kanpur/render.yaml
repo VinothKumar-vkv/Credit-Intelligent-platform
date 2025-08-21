@@ -1,0 +1,42 @@
+services:
+  - type: web
+    name: credit-backend
+    env: docker
+    dockerfilePath: Dockerfile.backend
+    autoDeploy: true
+    healthCheckPath: /health/live
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: API_HOST
+        value: 0.0.0.0
+      - key: API_PORT
+        value: 8000
+      - key: LOG_LEVEL
+        value: INFO
+      - key: ISSUERS
+        value: AAPL,MSFT,TSLA,AMZN
+      - key: NEWS_RSS_FEEDS
+        value: https://news.google.com/rss/search?q=AAPL,https://news.google.com/rss/search?q=MSFT
+  - type: worker
+    name: credit-scheduler
+    env: docker
+    dockerfilePath: Dockerfile.backend
+    startCommand: python -m app.scheduler.run
+    autoDeploy: true
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: SCHEDULER_INTERVAL_SECONDS
+        value: 600
+      - key: ISSUERS
+        value: AAPL,MSFT,TSLA,AMZN
+      - key: NEWS_RSS_FEEDS
+        value: https://news.google.com/rss/search?q=AAPL,https://news.google.com/rss/search?q=MSFT
+  - type: static
+    name: credit-frontend
+    buildCommand: npm ci && npm run build --prefix frontend
+    staticPublishPath: frontend/dist
+    envVars:
+      - key: VITE_API_URL
+        sync: false
