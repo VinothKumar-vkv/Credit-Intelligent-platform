@@ -4,7 +4,8 @@ This repository contains a complete, end-to-end system that ingests multi-source
 
 
 
-![Frontend Dashboard Screenshot](./assets/frontend-screenshot.png)
+<img width="1917" height="971" alt="image" src="https://github.com/user-attachments/assets/9bf09678-dca4-406e-8a0f-b7c3e08b3f87" />
+
 
 
 ## Highlights
