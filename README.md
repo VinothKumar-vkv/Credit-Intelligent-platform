@@ -2,6 +2,11 @@
 
 This repository contains a complete, end-to-end system that ingests multi-source data, computes adaptive creditworthiness scores with feature-level explainability, and presents results in an interactive analyst dashboard. It is designed for real-time operation, robust engineering, and clear transparency.
 
+
+
+![Frontend Dashboard Screenshot](./assets/frontend-screenshot.png)
+
+
 ## Highlights
 - High-throughput ingestion from structured (Yahoo Finance, World Bank) and unstructured (news RSS) sources
 - Adaptive, online learning scoring engine (incremental SGD) with deterministic, feature-level contributions (no LLM)
